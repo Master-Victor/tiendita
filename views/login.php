@@ -7,7 +7,7 @@
 			<?= (new Alerta())->get_alertas() ?>
 		</div>
 
-        <form class="row g-3" action="actions/auth_login.php" method="POST">
+        <form class="row g-3" action="./admin/actions/auth_login.php" method="POST">
 		<div class="col-12 mb-3">
 			<label for="username" class="form-label">Nombre de Usuario</label>
 			<input type="text" class="form-control" id="username" name="username" required>
@@ -20,10 +20,6 @@
 
 				<button type="submit" class="btn btn-primary">Login</button>
 	</form>
-            
-
         </div>
-
-
     </div>
 </div>

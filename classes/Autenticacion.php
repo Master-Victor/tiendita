@@ -9,7 +9,7 @@ class Autenticacion
      * @param string $username El password provisto
      * @return bool Devuelve TRUE en caso que las credenciales sean correctas, FALSE en caso de que no lo sean
      */
-    public function log_in(string $usuario, string $password): bool
+    public function log_in(string $usuario, string $password): ?string
     {
 
         echo "<p>VAMOS A INTENTAR AUTENTICAR UN USUARIO</p>";
@@ -18,9 +18,9 @@ class Autenticacion
 
         $datosUsuario = (new Usuario())->usuario_x_username($usuario);
 
-        echo "<pre>";
-        var_dump($datosUsuario);
-        echo "</pre>";
+        //echo "<pre>";
+        //var_dump($datosUsuario);
+        //echo "</pre>";
         if ($datosUsuario) {
             if (password_verify($password, $datosUsuario->getPassword())) {
                 echo "<p>EL PASSWORD ES CORRECTO! LOGUEAR!</p>";
@@ -28,14 +28,14 @@ class Autenticacion
                 $datosLogin['id'] = $datosUsuario->getId();
                 $datosLogin['rol'] = $datosUsuario->getRol();
                 $_SESSION['loggedIn'] = $datosLogin;
-                return TRUE;
+                return $datosLogin['rol'];
             } else {
-                //(new Alerta())->add_alerta('danger', "El password ingresado no es correcto.");
-                return FALSE;
+                (new Alerta())->add_alerta('danger', "El password ingresado no es correcto.");
+                return null;
             }
         } else {
-            //(new Alerta())->add_alerta('warning', "El usuario ingresado no se encontró en nuestra base de datos.");
-            return FALSE;
+            (new Alerta())->add_alerta('warning', "El usuario ingresado no se encontró en nuestra base de datos.");
+            return null;
         }
     }
 
@@ -51,14 +51,9 @@ class Autenticacion
     public function verify(): bool
     {
         if (isset($_SESSION['loggedIn'])) {
-
-
-            //echo "<pre>";
-            //var_dump($_SESSION['loggedIn']);
-            //echo "</pre>";
             return TRUE;
         } else {
-            header('location: index.php?sec=login');
+            //header('location: ./index.php?sec=login');
         }
     }
 }

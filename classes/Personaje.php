@@ -21,7 +21,7 @@ class Personaje
 
         $resultado = [];
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM personajes";
 
         $PDOStatement = $conexion->prepare($query);
@@ -39,7 +39,7 @@ class Personaje
      */
     public function get_x_id(int $id): ?Personaje
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM personajes WHERE id = $id";
 
         $PDOStatement = $conexion->prepare($query);
@@ -96,7 +96,7 @@ class Personaje
     public function insert($nombre, $alias, $creador, $primera_aparicion, $biografia, $imagen)
     {
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "INSERT INTO personajes VALUES (NULL, :nombre, :alias, :biografia, :creador, :primera_aparicion, :imagen)";
 
         $PDOStatement = $conexion->prepare($query);
@@ -124,7 +124,7 @@ class Personaje
     public function edit($nombre, $alias, $creador, $primera_aparicion, $biografia, $id)
     {
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "UPDATE personajes SET nombre = :nombre, alias = :alias, biografia = :biografia, creador = :creador, primera_aparicion = :primera_aparicion WHERE id = :id";
 
         $PDOStatement = $conexion->prepare($query);
@@ -146,7 +146,7 @@ class Personaje
      */
     public function reemplazar_imagen($imagen, $id)
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "UPDATE personajes SET imagen = :imagen WHERE id = :id";
 
         $PDOStatement = $conexion->prepare($query);
@@ -163,7 +163,7 @@ class Personaje
      */
     public function delete()
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "DELETE FROM personajes WHERE id = ?;";
 
 

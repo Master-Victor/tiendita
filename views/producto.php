@@ -1,8 +1,10 @@
 <?PHP
 $id = $_GET['id'] ?? FALSE;
 $miObjetoComic = new Comic();
-$comic = $miObjetoComic->producto_x_id($id);
-
+$comic = $miObjetoComic->producto_x_id(intval($id));
+echo "<pre>";
+print_r($comic);
+echo "</pre>";
 ?>
 
 <div class="row">
@@ -22,14 +24,24 @@ $comic = $miObjetoComic->producto_x_id($id);
                         </div>
 
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion(); ?></li>
-                            <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte(); ?></li>
+                            <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion()->getNombre(); ?></li>
+                            <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte()->getNombre(); ?></li>
                             <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $comic->getPublicacion() ?></li>
                         </ul>
 
                         <div class="card-body flex-grow-0 mt-auto">
                             <div class="fs-3 mb-3 fw-bold text-center text-danger">$<?= $comic->precio_formateado() ?></div>
-                            <a href="#" class="btn btn-danger w-100 fw-bold">COMPRAR</a>
+                            <form action="admin/actions/add_item_carrito.php" method="GET" class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                    <label for="q" class="fw-bold me-2">Cantidad: </label>
+                                    <input type="number" class="form-control" value="1" name="cantidad" id="cantidad">
+                                </div>
+                                <div class="col-6">
+                                    <input type="submit" value="COMPRAR" class="btn btn-danger w-100 fw-bold">
+                                    <input type="hidden" value="<?= $id ?>" name="id" id="id">
+
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

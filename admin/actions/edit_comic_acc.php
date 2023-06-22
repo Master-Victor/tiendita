@@ -44,7 +44,7 @@ try {
         $id
     );
     //Necesito almacenar mis personajes secundarios
-    //header('Location: ../index.php?sec=admin_comics');
+    header('Location: ../index.php?sec=admin_comics');
     /**/
 } catch (\Exception $e) {
     echo "<pre>";

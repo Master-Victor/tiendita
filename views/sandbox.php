@@ -5,18 +5,12 @@
             <div class="col">
                 <?PHP
 
-                $objetoPersonaje = new Personaje();
-                $listaCompleta = $objetoPersonaje->lista_completa();
-
-
-
-                $objetoPersonaje->insert('Billy Kaplan', "Wiccan", "Allan Heingberg, Jim Cheung", "1986", "Reclutado para los Jóvenes Vengadores por Iron Lad, la historia de Wiccan incluye el descubrimiento de que él y su compañero héroe adolescente Speed son, de hecho, hermanos gemelos perdidos hace mucho tiempo, y que la pareja son los hijos de Scarlet Witch y su esposo Visión. Las historias más importantes para el personaje incluyen la búsqueda de él y su hermano de su madre desaparecida, aprender a dominar sus poderes y una relación continua con su compañero de equipo Hulkling.", "");
-
-
-                echo "<pre>";
-                print_r($listaCompleta);
-                echo "</pre>";
-
+                    (new Alerta())->add_alerta("warning", "amarillo");
+                    echo "<pre>";
+                    print_r($_SESSION);
+                    echo "</pre>";
+                    echo (new Alerta())->get_alertas();
+                    //(new Alerta())->clear_alertas();
                 ?>
             </div>
         </div>

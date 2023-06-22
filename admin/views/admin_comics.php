@@ -31,14 +31,14 @@ $comics = (new comic())->catalogo_completo();
                             <td><?= $C->getTitulo() ?></td>
                             <td><?= $C->getBajada() ?></td>
                             <td><?php 
-                                $personajes = $C->getPersonajeSecundario();//"1,2,3,4"
+                                '$personajes = $C->getPersonajes_secundarios_ids();//"1,2,3,4"
                                 $personaje_separado = empty($personajes) ? [] : explode(",", $personajes); //[1,2,3,4]
                                 if( count($personaje_separado) > 0 ) echo ((new Personaje())->get_x_id($personaje_separado[0]))->getNombre();
-                                //echo $personajes;
+                                //echo $personajes;'
                             ?></td>
                             <td><?= $C->getTitulo() ?></td>
-                            <td><?= $C->getGuion() ?></td>
-                            <td><?= $C->getArte() ?></td>
+                            <td><?= $C->getGuion()->getNombre() ?></td>
+                            <td><?= $C->getArte()->getNombre() ?></td>
                             <td>$<?= $C->getPrecio() ?></td>
                             <td>
                                 <a href="index.php?sec=edit_comic&id=<?= $C->getId() ?>" role="button" class="d-block btn btn-sm btn-warning mb-1">Editar</a>

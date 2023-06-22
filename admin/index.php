@@ -1,10 +1,10 @@
 <?PHP
 require_once "../functions/autoload.php";
-echo "<pre>";
-print_r($_SESSION);
-echo isset($_SESSION['loggedIn']) ? "TRUE" : "FALSE";
+//echo "<pre>";
+//print_r($_SESSION);
+//echo isset($_SESSION['loggedIn']) ? "TRUE" : "FALSE";
 $session = isset($_SESSION['loggedIn']) ? '' : 'd-none';
-echo "</pre>";
+//echo "</pre>";
 
 //(new Autenticacion())->verify();
 

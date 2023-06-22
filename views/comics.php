@@ -21,8 +21,8 @@ $productos = $miObjetoComic->catalogo_x_personaje($id_personaje);
                     <p class="card-text"><?= $comic->bajada_reducida() ?></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion(); ?></li>
-                    <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte(); ?></li>
+                    <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion()->getNombre(); ?></li>
+                    <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte()->getNombre(); ?></li>
                     <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $comic->getPublicacion(); ?></li>
                 </ul>
                 <div class="card-body">

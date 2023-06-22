@@ -2,9 +2,6 @@
 $miObjetoComic = new Comic();
 $productos = $miObjetoComic->catalogo_completo();
 
-echo "<pre>";
-print_r($productos);
-echo "</pre>";
 ?>
 <h1 class="text-center fs-2 my-5"> Nuestro catálogo completo</h1>
 <div class="row">
@@ -14,16 +11,16 @@ echo "</pre>";
 ?>
         <div class="col-3">
             <div class="card mb-3">
-                <img src="img/covers/<?= $comic->getPortada(); ?>" class="card-img-top" alt="Portada de <?= $comic->nombre_completo() ?>">
+                <img src="img/covers/<?= $comic->getPortada() ?>" class="card-img-top" alt="Portada de <?= $comic->nombre_completo() ?>">
                 <div class="card-body">
                     <p class="fs-6 m-0 fw-bold text-danger"><?= $comic->nombre_completo() ?></p>
-                    <h2 class="card-title fs-5"><?= $comic->getTitulo(); ?></h2>
+                    <h2 class="card-title fs-5"><?=$comic->getTitulo() ?></h2>
                     <p class="card-text"><?= $comic->bajada_reducida() ?></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion(); ?></li>
-                    <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte(); ?></li>
-                    <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $comic->getPublicacion(); ?></li>
+                    <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion()->getNombre() ?></li>
+                    <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte()->getNombre() ?></li>
+                    <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $comic->getPublicacion() ?></li>
                 </ul>
                 <div class="card-body">
                     <div class="fs-3 mb-3 fw-bold text-center text-danger">$<?= $comic->precio_formateado() ?></div>

@@ -22,6 +22,12 @@ $secciones_validas = [
     ],
     "sandbox" => [
         "titulo" => "Sandbox para testeo"
+    ],
+    "login" => [
+        "titulo" => "Login" 
+    ],
+    "carrito" => [
+        "titulo" => "Carrito" 
     ]
 ];
 
@@ -36,7 +42,7 @@ $secciones_validas = [
 //Si una variable esta definida y no es NULL la asigna, sino asginga la alternativa. Lo mismo pero mas conciso.
 $seccion = $_GET['sec'] ?? "home";
 
-
+$userData = $_SESSION["loggedIn"] ?? FALSE;
 if (!array_key_exists($seccion, $secciones_validas)) {
     $vista = "404";
     $titulo = "404 - Página no encontrada";
@@ -101,6 +107,15 @@ if (!array_key_exists($seccion, $secciones_validas)) {
                             </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?sec=envios">Envios</a>
+                    </li>
+                    <li class="nav-item <?= $userData ? "d-none" : "" ?>">
+                        <a class="nav-link" href="index.php?sec=login">Login</a>
+                    </li>
+                    <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                        <a class="nav-link" href="admin/actions/auth_logout.php">Cerrar sesion</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.php?sec=carrito">Carrito</a>
                     </li>
                 </ul>
             </div>

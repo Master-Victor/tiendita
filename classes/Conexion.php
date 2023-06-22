@@ -14,15 +14,16 @@ class Conexion
     /**
      * Esta propiedad es te tipo PDO
      */
-    protected PDO $db;
+    protected static ?PDO $db = null;
 
-    public function __construct()
+    private static function conectar()
     {
 
         try {
-            $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(
+            self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
               ));
+              
         } catch (Exception $e) {
             die('Error al conectar con MySQL.');
         }
@@ -32,8 +33,12 @@ class Conexion
      * Función que devuelve una conexión PDO lista para usar
      * @return PDO
      */
-    public function getConexion(): PDO
+    public static function getConexion(): PDO
     {
-        return $this->db;
+        if(self::$db == null){
+            self::conectar();
+        }
+
+        return self::$db;
     }
 }

@@ -18,7 +18,7 @@ class Usuario
      */
     public function usuario_x_username(string $username): ?Usuario
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM usuarios WHERE nombre_usuario = ?";
 
         $PDOStatement = $conexion->prepare($query);

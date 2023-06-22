@@ -9,7 +9,11 @@ echo "</pre>";
 $login = (new Autenticacion())->log_in($postData['username'], $postData['pass']);
 
  if($login){
-     header('location: ../index.php?sec=dashboard');
+    if( $login != "usuario" )
+        header('location: ../index.php?sec=dashboard');
+    else{
+        header('location: ../../index.php');
+    }
  }else{
-     header('location: ../index.php?sec=login');
+    header('location: ../../index.php?sec=login');
  }
