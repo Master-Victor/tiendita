@@ -1,6 +1,6 @@
 # tiendita
 usuarios para entrar al admin
-#user
+# user
 victor
-##password
+## password
 123456
